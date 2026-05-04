@@ -6,7 +6,7 @@
     "wisata": "Wisata",
     "teknologi": "Teknologi",
     "peta": "Peta",
-    "sumbu": "Sumbu"
+    "filosofi": "Sumbu Filosofi"
   },
   "home": {
     "hero": {
@@ -51,7 +51,7 @@
         "desc": "Jelajahi titik spasial dan sumbu filosofis."
       },
       "sumbu": {
-        "title": "Sumbu",
+        "title": "Sumbu Filosofi",
         "desc": "Perjalanan kosmologis 33 kilometer dari api ke samudra.",
         "badge": "Fitur Interaktif"
       }
@@ -113,7 +113,7 @@
     "act": "Babak"
   },
   "budaya": {
-    "page_title": "Budaya — Yogyakarta.id",
+    "page_title": "Budaya — jogjaku.id",
     "category": "Budaya",
     "header_title": "Pusaka Jiwa Mataram",
     "header_desc": "Menelusuri jejak peradaban yang tertulis dalam filosofi, gerak, dan bunyi di tanah Yogyakarta.",
@@ -123,7 +123,8 @@
     "time_cycle_desc": "Setiap festival Keraton adalah ekspresi kosmologis yang menghubungkan manusia dengan siklus alam semesta.",
     "month_of": "Bulan",
     "aksara_category": "Warisan Intelektual",
-    "aksara_desc": "Hanacaraka adalah simbol filosofis perjalanan hidup manusia yang lahir di tanah Mataram.",
+    "aksara": "Aksara Jawa",
+    "aksara_desc": "Aksara Jawa adalah simbol filosofis perjalanan hidup manusia yang lahir di tanah Mataram.",
     "translator_title": "Script & AI Recognition",
     "translator_placeholder": "Ketik teks Latin atau Aksara...",
     "translator_waiting": "Hasil terjemahan akan muncul di sini...",
@@ -174,7 +175,7 @@
     "business_source": "Data Kurasi Diskominfo DIY"
   },
   "peta": {
-    "page_title": "Peta — Yogyakarta.id",
+    "page_title": "Peta — jogjaku.id",
     "category": "Peta Interaktif",
     "header_title": "Jejak Spasial Mataram",
     "header_desc": "Eksplorasi titik-titik krusial yang membentuk denyut nadi wisata, kuliner, budaya, dan teknologi Yogyakarta.",

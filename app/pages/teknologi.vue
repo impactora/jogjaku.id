@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from "vue";
-import { useHead, useI18n, useAsyncData } from "#imports";
+import { useSeoMeta, useI18n, useAsyncData } from "#imports";
 
 const { t, locale } = useI18n();
 
@@ -19,7 +19,11 @@ const initiatives = computed(() => {
   }));
 });
 
-useHead({ title: computed(() => t("teknologi.page_title")) });
+useSeoMeta({
+  title: computed(() => t("teknologi.page_title")),
+  description: computed(() => t("teknologi.header_desc")),
+  ogTitle: computed(() => t("teknologi.page_title")),
+});
 </script>
 
 <template>

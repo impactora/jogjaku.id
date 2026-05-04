@@ -3,8 +3,13 @@
   "configVersion": 1,
   "workspaces": {
     "": {
-      "name": "yogyakarta-id",
+      "name": "jogjaku.id",
       "dependencies": {
+        "jogjaku.id": ".",
+        "@fontsource/josefin-sans": "^5.2.8",
+        "@fontsource/lato": "^5.2.7",
+        "@fontsource/libre-baskerville": "^5.2.10",
+        "@fontsource/noto-sans-javanese": "^5.2.8",
         "@google/generative-ai": "^0.24.1",
         "@nuxtjs/i18n": "^10.3.0",
         "@tailwindcss/vite": "^4.2.4",
@@ -303,6 +308,14 @@
     "@eslint/object-schema": ["@eslint/object-schema@3.0.5", "", {}, "sha512-vqTaUEgxzm+YDSdElad6PiRoX4t8VGDjCtt05zn4nU810UIx/uNEV7/lZJ6KwFThKZOzOxzXy48da+No7HZaMw=="],
 
     "@eslint/plugin-kit": ["@eslint/plugin-kit@0.7.1", "", { "dependencies": { "@eslint/core": "^1.2.1", "levn": "^0.4.1" } }, "sha512-rZAP3aVgB9ds9KOeUSL+zZ21hPmo8dh6fnIFwRQj5EAZl9gzR7wxYbYXYysAM8CTqGmUGyp2S4kUdV17MnGuWQ=="],
+
+    "@fontsource/josefin-sans": ["@fontsource/josefin-sans@5.2.8", "", {}, "sha512-bGY9VWF01JQc5pAOF3+tLlm75dpwJrRhd5CzY3/oyksvdZQbtwOHSDuu20VGxbBDx2/JQdllNvSJFgqI4QGGqg=="],
+
+    "@fontsource/lato": ["@fontsource/lato@5.2.7", "", {}, "sha512-k5mum1ADbDW5cTw1Ett1eQVWeoZ6gq0ct6SFBibEhB4LRxhniChJZTBgd6ph5yBxLkN1fcnsnmicBNA4S/3nbw=="],
+
+    "@fontsource/libre-baskerville": ["@fontsource/libre-baskerville@5.2.10", "", {}, "sha512-Y/bGj4cOdWhAxU4+sBPen3MB5Og3t/WvezVL+05CJ7cvhDQUKpQFUuw/hm1IQKRc9u0lWs8VP2MKDOK2uQtloQ=="],
+
+    "@fontsource/noto-sans-javanese": ["@fontsource/noto-sans-javanese@5.2.8", "", {}, "sha512-YlBwJSsg/B+jdfXDGbFAIfn5wUX0UTAa060E3fmU5r0+GcbKgCKKnPX/8nFvKDJNulL0J29j7O+/iPK/N0Mm8w=="],
 
     "@google/generative-ai": ["@google/generative-ai@0.24.1", "", {}, "sha512-MqO+MLfM6kjxcKoy0p1wRzG3b4ZZXtPI+z2IE26UogS2Cm/XHO+7gGRBh6gcJsOiIVoH93UwKvW4HdgiOZCy9Q=="],
 
@@ -1309,6 +1322,8 @@
     "jake": ["jake@10.9.4", "", { "dependencies": { "async": "^3.2.6", "filelist": "^1.0.4", "picocolors": "^1.1.1" }, "bin": { "jake": "bin/cli.js" } }, "sha512-wpHYzhxiVQL+IV05BLE2Xn34zW1S223hvjtqk0+gsPrwd/8JNLXJgZZM/iPFsYc1xyphF+6M6EvdE5E9MBGkDA=="],
 
     "jiti": ["jiti@2.6.1", "", { "bin": { "jiti": "lib/jiti-cli.mjs" } }, "sha512-ekilCSN1jwRvIbgeg/57YFh8qQDNbwDb9xT/qu2DAHbFFZUicIl4ygVaAvzveMhMVr3LnpSKTNnwt8PoOfmKhQ=="],
+
+    "jogjaku.id": ["jogjaku.id@root:", {}],
 
     "js-tokens": ["js-tokens@9.0.1", "", {}, "sha512-mxa9E9ITFOt0ban3j6L5MpjwegGz6lBQmM1IJkWeBZGcMxto50+eWdjC/52xDbS2vy0k7vIMK0Fe2wfL9OQSpQ=="],
 

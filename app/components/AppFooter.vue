@@ -6,7 +6,7 @@ const routes = [
   "wisata",
   "teknologi",
   "peta",
-  "sumbu",
+  "filosofi",
 ];
 </script>
 
@@ -22,13 +22,13 @@ const routes = [
           to="/"
           class="font-libre text-[24px] font-normal tracking-[0.04em] text-[#faf7f2]"
         >
-          Jiwa <em class="italic text-[#b8491f]">Nusantara</em> —
+          <em class="italic text-[#b8491f]">Jogja</em>Ku —
           <span class="text-[18px] opacity-90">{{
             $t("footer.portal_tagline")
           }}</span>
         </NuxtLink>
         <p
-          class="font-josefin text-[12px] font-light leading-relaxed tracking-wider opacity-60 max-w-sm mx-auto md:mx-0"
+          class="font-josefin text-[12px] font-light leading-relaxed tracking-wider text-stone-300 max-w-sm mx-auto md:mx-0"
         >
           {{ $t("footer.description") }}
         </p>
@@ -38,7 +38,7 @@ const routes = [
         class="md:col-span-7 grid grid-cols-2 md:grid-cols-3 gap-8 font-josefin text-[11px] font-semibold uppercase tracking-[0.2em] text-center md:text-left"
       >
         <div class="flex flex-col gap-4">
-          <span class="text-[#8a7560]">Eksplorasi</span>
+          <span class="text-stone-300">Eksplorasi</span>
           <NuxtLink
             v-for="item in routes.slice(0, 3)"
             :key="item"
@@ -50,31 +50,35 @@ const routes = [
         </div>
 
         <div class="flex flex-col gap-4">
-          <span class="text-[#8a7560]">Sistem</span>
+          <span class="text-stone-300">Sistem</span>
           <NuxtLink
             v-for="item in routes.slice(3)"
             :key="item"
             :to="`/${item}`"
             class="hover:text-[#b8491f] transition-colors"
-            :class="item === 'sumbu' ? 'text-[#b8491f]/70' : ''"
+            :class="
+              item === 'filosofi'
+                ? 'text-[#faf7f2] underline decoration-terra decoration-2 underline-offset-4'
+                : ''
+            "
           >
             {{ $t(`nav.${item}`) }}
           </NuxtLink>
         </div>
 
         <div class="flex flex-col gap-4">
-          <span class="text-[#8a7560]">Impactora</span>
-          <span class="opacity-40 tracking-[0.3em] block mt-1">MMXXVI</span>
+          <span class="text-stone-300">Impactora</span>
+          <span class="text-stone-400 tracking-[0.3em] block mt-1">MMXXVI</span>
           <div class="w-8 h-px bg-terra opacity-50 mx-auto md:mx-0"></div>
         </div>
       </div>
     </div>
 
     <div
-      class="px-5 lg:px-[60px] py-6 flex justify-between items-center font-josefin text-[10px] font-light uppercase tracking-[0.15em] text-[#8a7560]"
+      class="px-5 lg:px-[60px] py-6 flex justify-between items-center font-josefin text-[10px] font-light uppercase tracking-[0.15em] text-stone-300"
     >
-      <span>&copy; 2026 JIWA NUSANTARA.</span>
-      <span class="opacity-50">VOL. I YOGYAKARTA</span>
+      <span>&copy; 2026 JogjaKu.</span>
+      <span class="text-stone-400">VOL. I YOGYAKARTA</span>
     </div>
   </footer>
 </template>

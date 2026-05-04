@@ -172,8 +172,12 @@ const generatePlan = async () => {
 const downloadPDF = () => {
   if (!itinerary.value) return;
 
-  const docTitle = t("ai_guide.pdf_filename", { days: plannerForm.value.days });
-  const headerText = t("ai_guide.pdf_title", { days: plannerForm.value.days });
+  const docTitle = t("ai_guide.pdf_filename", {
+    days: plannerForm.value.days,
+  });
+  const headerText = t("ai_guide.pdf_title", {
+    days: plannerForm.value.days,
+  });
   const dayText = t("ai_guide.day");
 
   let printContent = `
@@ -274,7 +278,7 @@ const downloadPDF = () => {
                 }}
               </div>
               <div class="font-lato text-[10px] text-warm-white/50">
-                Jiwa Nusantara (Beta)
+                JogjaKu (Beta)
               </div>
             </div>
           </div>
@@ -498,7 +502,11 @@ const downloadPDF = () => {
               {{ $t("ai_guide.contacting_ai") }}
             </div>
             <div class="text-[12px] text-muted mt-2 px-6">
-              {{ $t("ai_guide.processing_data", { days: plannerForm.days }) }}
+              {{
+                $t("ai_guide.processing_data", {
+                  days: plannerForm.days,
+                })
+              }}
             </div>
           </div>
 
@@ -510,7 +518,11 @@ const downloadPDF = () => {
               class="flex justify-between items-center mb-2 border-b border-line pb-3"
             >
               <div class="font-libre text-[18px] font-bold text-ink">
-                {{ $t("ai_guide.schedule_title", { days: plannerForm.days }) }}
+                {{
+                  $t("ai_guide.schedule_title", {
+                    days: plannerForm.days,
+                  })
+                }}
               </div>
               <div class="flex gap-3">
                 <button

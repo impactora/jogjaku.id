@@ -11,5 +11,12 @@ const handleError = (e: Event) => {
 </script>
 
 <template>
-  <img :src="src" :alt="alt" @error="handleError" v-bind="$attrs" />
+  <img
+    :src="src"
+    :alt="alt ?? ''"
+    loading="lazy"
+    decoding="async"
+    @error="handleError"
+    v-bind="$attrs"
+  />
 </template>

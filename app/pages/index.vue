@@ -1,15 +1,21 @@
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted, nextTick } from "vue";
-import gsap from "gsap";
+import { ref, computed, onMounted, onUnmounted, nextTick } from "vue";
+import { useSeoMeta, useI18n } from "#imports";
+
+const { t } = useI18n();
+
+useSeoMeta({
+  description: computed(() => t("footer.description")),
+});
 
 const cursorDotRef = ref<HTMLElement | null>(null);
 const cursorRingRef = ref<HTMLElement | null>(null);
 const isMounted = ref(false);
 
-let xToDot: ReturnType<typeof gsap.quickTo>;
-let yToDot: ReturnType<typeof gsap.quickTo>;
-let xToRing: ReturnType<typeof gsap.quickTo>;
-let yToRing: ReturnType<typeof gsap.quickTo>;
+let xToDot: ((v: number) => void) | undefined;
+let yToDot: ((v: number) => void) | undefined;
+let xToRing: ((v: number) => void) | undefined;
+let yToRing: ((v: number) => void) | undefined;
 
 const onMove = (e: MouseEvent) => {
   if (xToDot && yToDot && xToRing && yToRing) {
@@ -24,34 +30,37 @@ onMounted(() => {
   isMounted.value = true;
 
   nextTick(() => {
-    if (window.matchMedia("(pointer: fine)").matches) {
+    if (!window.matchMedia("(pointer: fine)").matches) return;
+
+    void (async () => {
+      const { default: gsap } = await import("gsap");
       document.documentElement.style.cursor = "none";
 
-      if (cursorDotRef.value && cursorRingRef.value) {
-        gsap.set(cursorDotRef.value, { xPercent: -50, yPercent: -50 });
-        gsap.set(cursorRingRef.value, { xPercent: -50, yPercent: -50 });
+      if (!cursorDotRef.value || !cursorRingRef.value) return;
 
-        xToDot = gsap.quickTo(cursorDotRef.value, "x", {
-          duration: 0,
-          ease: "none",
-        });
-        yToDot = gsap.quickTo(cursorDotRef.value, "y", {
-          duration: 0,
-          ease: "none",
-        });
+      gsap.set(cursorDotRef.value, { xPercent: -50, yPercent: -50 });
+      gsap.set(cursorRingRef.value, { xPercent: -50, yPercent: -50 });
 
-        xToRing = gsap.quickTo(cursorRingRef.value, "x", {
-          duration: 0.6,
-          ease: "power3.out",
-        });
-        yToRing = gsap.quickTo(cursorRingRef.value, "y", {
-          duration: 0.6,
-          ease: "power3.out",
-        });
+      xToDot = gsap.quickTo(cursorDotRef.value, "x", {
+        duration: 0,
+        ease: "none",
+      });
+      yToDot = gsap.quickTo(cursorDotRef.value, "y", {
+        duration: 0,
+        ease: "none",
+      });
 
-        window.addEventListener("mousemove", onMove);
-      }
-    }
+      xToRing = gsap.quickTo(cursorRingRef.value, "x", {
+        duration: 0.6,
+        ease: "power3.out",
+      });
+      yToRing = gsap.quickTo(cursorRingRef.value, "y", {
+        duration: 0.6,
+        ease: "power3.out",
+      });
+
+      window.addEventListener("mousemove", onMove);
+    })();
   });
 });
 

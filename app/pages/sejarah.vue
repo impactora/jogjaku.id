@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref, computed } from "vue";
-import { useHead, useI18n, useAsyncData } from "#imports";
+import { useSeoMeta, useI18n, useAsyncData } from "#imports";
 
 const { t, locale } = useI18n();
 
@@ -21,7 +21,11 @@ const timeline = computed(() => {
 
 const activeIndex = ref(0);
 
-useHead({ title: computed(() => t("sejarah.page_title")) });
+useSeoMeta({
+  title: computed(() => t("sejarah.page_title")),
+  description: computed(() => t("sejarah.header_desc")),
+  ogTitle: computed(() => t("sejarah.page_title")),
+});
 </script>
 
 <template>

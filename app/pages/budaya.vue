@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from "vue";
-import { useHead, useI18n, useAsyncData } from "#imports";
+import { useSeoMeta, useI18n, useAsyncData } from "#imports";
 
 const { t, locale } = useI18n();
 
@@ -33,7 +33,11 @@ const festivals = computed(() => {
 
 const hanacaraka = computed(() => budayaData.value?.hanacaraka ?? []);
 
-useHead({ title: computed(() => t("budaya.page_title")) });
+useSeoMeta({
+  title: computed(() => t("budaya.page_title")),
+  description: computed(() => t("budaya.header_desc")),
+  ogTitle: computed(() => t("budaya.page_title")),
+});
 </script>
 
 <template>

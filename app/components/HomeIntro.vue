@@ -49,7 +49,7 @@ onUnmounted(() => {
           :key="index"
           class="font-libre text-2xl md:text-4xl lg:text-5xl font-bold tracking-tight transition-colors duration-500 ease-out"
           :class="
-            scrollProgress >= index / words.length ? 'text-ink' : 'text-ink/20'
+            scrollProgress >= index / words.length ? 'text-ink' : 'text-muted'
           "
           >{{ word }}{{ index !== words.length - 1 ? " " : "" }}</span
         >

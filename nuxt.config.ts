@@ -2,14 +2,14 @@ import tailwindcss from "@tailwindcss/vite";
 
 export default defineNuxtConfig({
   compatibilityDate: "2025-07-15",
-  devtools: { enabled: true },
+  devtools: { enabled: process.env.NODE_ENV === "development" },
   css: ["~/assets/css/main.css"],
 
   modules: ["@nuxtjs/i18n", "@vite-pwa/nuxt", "@nuxtjs/color-mode"],
 
   colorMode: {
     classSuffix: "",
-    preference: "system",
+    preference: "light",
     fallback: "light",
   },
 
@@ -27,13 +27,17 @@ export default defineNuxtConfig({
     geminiApiKey: process.env.GEMINI_API_KEY,
     groqApiKey: process.env.GROQ_API_KEY,
     openWeatherApiKey: process.env.OPENWEATHER_API_KEY,
+    public: {
+      siteUrl: process.env.NUXT_PUBLIC_SITE_URL || "https://jogjaku.id",
+    },
   },
 
   pwa: {
+    injectRegister: "script-defer",
     registerType: "prompt",
     manifest: {
-      name: "Jiwa Nusantara — Yogyakarta",
-      short_name: "Yogyakarta.id",
+      name: "JogjaKu — Pusaka Jiwa Mataram",
+      short_name: "JogjaKu",
       theme_color: "#faf7f2",
       background_color: "#faf7f2",
       display: "standalone",
@@ -41,23 +45,8 @@ export default defineNuxtConfig({
     },
     workbox: {
       navigateFallback: "/",
-      globPatterns: ["**/*.{js,css,html,png,svg,ico,woff2}"],
-      runtimeCaching: [
-        {
-          urlPattern: /^https:\/\/fonts\.googleapis\.com\/.*/i,
-          handler: "CacheFirst",
-          options: {
-            cacheName: "google-fonts-cache",
-            expiration: {
-              maxEntries: 10,
-              maxAgeSeconds: 60 * 60 * 24 * 365,
-            },
-            cacheableResponse: {
-              statuses: [0, 200],
-            },
-          },
-        },
-      ],
+      globPatterns: ["**/*.{js,css,html,png,svg,ico}"],
+      runtimeCaching: [],
     },
     client: {
       installPrompt: true,
@@ -82,21 +71,28 @@ export default defineNuxtConfig({
       ],
       link: [
         {
-          rel: "stylesheet",
-          href: "https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400;700&family=Josefin+Sans:wght@300;400;600&family=Noto+Sans+Javanese:wght@400;700&display=swap",
+          rel: "preload",
+          as: "image",
+          href: "/images/home/Tugu_Jogja-hero-sm.webp",
+          type: "image/webp",
+          media: "(max-width: 768px)",
+          fetchpriority: "high",
+        },
+        {
+          rel: "preload",
+          as: "image",
+          href: "/images/home/Tugu_Jogja-hero.webp",
+          type: "image/webp",
+          media: "(min-width: 769px)",
+          fetchpriority: "high",
         },
         { rel: "icon", type: "image/svg+xml", href: "/favicon.svg" },
-        { rel: "preconnect", href: "https://fonts.googleapis.com" },
-        {
-          rel: "preconnect",
-          href: "https://fonts.gstatic.com",
-          crossorigin: "",
-        },
       ],
     },
   },
 
   nitro: {
+    compressPublicAssets: true,
     prerender: {
       routes: [
         "/",
@@ -111,12 +107,34 @@ export default defineNuxtConfig({
       crawlLinks: true,
     },
     serverAssets: [{ baseName: "data", dir: "./server/data" }],
+    routeRules: {
+      "/images/**": {
+        headers: {
+          "cache-control": "public, max-age=31536000, immutable",
+        },
+      },
+      "/_nuxt/**": {
+        headers: {
+          "cache-control": "public, max-age=31536000, immutable",
+        },
+      },
+    },
   },
 
   vite: {
     plugins: [tailwindcss()],
     optimizeDeps: {
-      include: ["@vue/devtools-core", "@vue/devtools-kit"],
+      include: [
+        "@vue/devtools-core",
+        "@vue/devtools-kit",
+        "gsap",
+        "gsap/Observer",
+        "lucide-vue-next",
+        "fuse.js",
+        "maplibre-gl", // CJS
+        "leaflet", // CJS
+        "leaflet.markercluster", // CJS
+      ],
     },
   },
 });

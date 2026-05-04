@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref, computed, watch } from "vue";
-import { useHead, useI18n, useAsyncData } from "#imports";
+import { useSeoMeta, useI18n, useAsyncData } from "#imports";
 import { Printer } from "lucide-vue-next";
 
 const { t, locale } = useI18n();
@@ -47,7 +47,11 @@ const triggerPrint = () => {
   window.print();
 };
 
-useHead({ title: computed(() => t("wisata.page_title")) });
+useSeoMeta({
+  title: computed(() => t("wisata.page_title")),
+  description: computed(() => t("wisata.header_desc")),
+  ogTitle: computed(() => t("wisata.page_title")),
+});
 </script>
 
 <template>

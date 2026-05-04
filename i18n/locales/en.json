@@ -6,7 +6,7 @@
     "wisata": "Tourism",
     "teknologi": "Technology",
     "peta": "Map",
-    "sumbu": "Axis"
+    "filosofi": "Philosophical Axis"
   },
   "home": {
     "hero": {
@@ -51,7 +51,7 @@
         "desc": "Explore spatial points and the philosophical axis."
       },
       "sumbu": {
-        "title": "Axis",
+        "title": "Axis Philosophy",
         "desc": "A 33-kilometer cosmological journey from fire to ocean.",
         "badge": "Interactive Feature"
       }
@@ -113,7 +113,7 @@
     "act": "Act"
   },
   "budaya": {
-    "page_title": "Culture — Yogyakarta.id",
+    "page_title": "Culture — jogjaku.id",
     "category": "Culture",
     "header_title": "Soul of Mataram",
     "header_desc": "Exploring the traces of civilization etched in philosophy, movement, and sound of Yogyakarta.",
@@ -123,7 +123,8 @@
     "time_cycle_desc": "Every Keraton festival is a cosmological expression connecting humans to the cycles of the universe.",
     "month_of": "Month of",
     "aksara_category": "Intellectual Heritage",
-    "aksara_desc": "Hanacaraka is a philosophical symbol of the human life journey born in the land of Mataram.",
+    "aksara": "Javanese Script",
+    "aksara_desc": "Javanese script is a philosophical symbol of the human life journey born in the land of Mataram.",
     "translator_title": "Script & AI Recognition",
     "translator_placeholder": "Type Latin text or Script...",
     "translator_waiting": "Translation result will appear here...",
@@ -174,7 +175,7 @@
     "business_source": "Diskominfo DIY Curation Data"
   },
   "peta": {
-    "page_title": "Map — Yogyakarta.id",
+    "page_title": "Map — jogjaku.id",
     "category": "Interactive Map",
     "header_title": "Mataram Spatial Traces",
     "header_desc": "Explore the crucial points that shape the pulse of Yogyakarta's tourism, culinary, culture, and technology.",

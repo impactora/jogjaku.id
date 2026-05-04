@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref, computed } from "vue";
-import { useHead, useI18n } from "#imports";
+import { useSeoMeta, useI18n } from "#imports";
 
 const { t } = useI18n();
 
@@ -9,7 +9,11 @@ const selectedCategory = ref<
   "all" | "wisata" | "kuliner" | "budaya" | "teknologi"
 >("all");
 
-useHead({ title: computed(() => t("peta.page_title")) });
+useSeoMeta({
+  title: computed(() => t("peta.page_title")),
+  description: computed(() => t("peta.header_desc")),
+  ogTitle: computed(() => t("peta.page_title")),
+});
 </script>
 
 <template>
@@ -32,9 +36,6 @@ useHead({ title: computed(() => t("peta.page_title")) });
       />
     </div>
 
-    <PetaMapContainer
-      :mode="currentMode"
-      :category="selectedCategory"
-    />
+    <PetaMapContainer :mode="currentMode" :category="selectedCategory" />
   </main>
 </template>

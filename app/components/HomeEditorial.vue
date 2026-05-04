@@ -11,7 +11,7 @@ const editorials = [
     titleKey: "home.editorial.sejarah.title",
     descKey: "home.editorial.sejarah.desc",
     script: "ꦧꦧꦢ꧀",
-    image: "/images/home/Tugu_Jogja.jpg",
+    image: "/images/home/Tugu_Jogja-hero.jpg",
     link: "/sejarah",
   },
   {
@@ -19,7 +19,7 @@ const editorials = [
     titleKey: "home.editorial.budaya.title",
     descKey: "home.editorial.budaya.desc",
     script: "ꦧꦸꦢꦪ",
-    image: "/images/home/Kraton_Yogyakarta.jpg",
+    image: "/images/home/Kraton_Yogyakarta-card.jpg",
     link: "/budaya",
   },
   {
@@ -27,7 +27,7 @@ const editorials = [
     titleKey: "home.editorial.wisata.title",
     descKey: "home.editorial.wisata.desc",
     script: "ꦭꦭꦢꦤ꧀",
-    image: "/images/home/Prambanan_Temple_Yogyakarta_Indonesia.jpg",
+    image: "/images/home/Prambanan_Temple_Yogyakarta_Indonesia-card.jpg",
     link: "/wisata",
   },
   {
@@ -35,7 +35,7 @@ const editorials = [
     titleKey: "home.editorial.kuliner.title",
     descKey: "home.editorial.kuliner.desc",
     script: "ꦧꦺꦴꦒ",
-    image: "/images/home/Nasi_Gudeg.jpg",
+    image: "/images/home/Nasi_Gudeg-card.jpg",
     link: "/kuliner",
   },
   {
@@ -43,7 +43,7 @@ const editorials = [
     titleKey: "home.editorial.teknologi.title",
     descKey: "home.editorial.teknologi.desc",
     script: "ꦏꦮꦿꦸꦃ",
-    image: "/images/home/Stasiun_Tugu_Yogyakarta.jpg",
+    image: "/images/home/Stasiun_Tugu_Yogyakarta-card.jpg",
     link: "/teknologi",
   },
   {
@@ -51,16 +51,16 @@ const editorials = [
     titleKey: "home.editorial.peta.title",
     descKey: "home.editorial.peta.desc",
     script: "ꦥꦺꦠ",
-    image: "/images/home/Malioboro_Street_Yogyakarta.jpg",
+    image: "/images/home/Malioboro_Street_Yogyakarta-card.jpg",
     link: "/peta",
   },
   {
-    id: "sumbu",
+    id: "filosofi",
     titleKey: "home.editorial.sumbu.title",
     descKey: "home.editorial.sumbu.desc",
     script: "ꦱꦸꦩ꧀ꦧꦸ",
-    image: "/images/home/parangtritis.jpg",
-    link: "/sumbu",
+    image: "/images/home/parangtritis-card.jpg",
+    link: "/filosofi",
   },
 ];
 
@@ -113,6 +113,12 @@ onUnmounted(() => {
         <img
           :src="item.image"
           :alt="t(item.titleKey)"
+          width="1000"
+          height="563"
+          sizes="(max-width: 1023px) 100vw, 20vw"
+          loading="lazy"
+          decoding="async"
+          fetchpriority="low"
           @error="
             (e) =>
               ((e.target as HTMLImageElement).src = '/images/placeholder.jpg')
@@ -180,7 +186,7 @@ onUnmounted(() => {
         >
           <div class="overflow-hidden">
             <p
-              class="font-lato text-sm md:text-base text-white/70 mt-6 max-w-sm leading-relaxed"
+              class="font-lato text-sm md:text-base text-white/90 mt-6 max-w-sm leading-relaxed"
             >
               {{ t(item.descKey) }}
             </p>

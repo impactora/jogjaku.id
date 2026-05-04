@@ -17,7 +17,7 @@ const { t, locale } = useI18n();
         {{ t("budaya.aksara_category") }}
       </div>
       <h2 class="font-libre text-[36px] lg:text-[48px] font-bold text-ink mb-6">
-        Hanacaraka
+        {{ t("budaya.aksara") }}
       </h2>
       <p
         class="text-[14px] font-light text-brown max-w-[600px] mx-auto italic leading-relaxed"

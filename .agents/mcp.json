@@ -1,0 +1,12 @@
+{
+    "mcpServers": {
+        "lighthouse": {
+            "command": "npx",
+            "args": [
+                "@danielsogl/lighthouse-mcp@latest",
+                "--chrome-path",
+                "/usr/bin/google-chrome-stable"
+            ]
+        }
+    }
+}

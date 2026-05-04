@@ -12,7 +12,7 @@ const routes = [
   "wisata",
   "teknologi",
   "peta",
-  "sumbu",
+  "filosofi",
 ];
 
 const isMenuOpen = ref(false);
@@ -52,7 +52,7 @@ const toggleLanguage = () => {
         class="font-libre text-[18px] lg:text-[20px] font-normal text-ink tracking-[0.04em]"
         @click="isMenuOpen = false"
       >
-        Jiwa <em class="italic text-terra">Nusantara</em>
+        <em class="italic text-terra">Jogja</em>Ku
       </NuxtLink>
       <ul class="hidden lg:flex gap-9">
         <li v-for="item in routes" :key="item">
@@ -60,7 +60,7 @@ const toggleLanguage = () => {
             :to="`/${item}`"
             active-class="text-terra"
             class="font-josefin text-[11px] font-semibold tracking-[0.18em] uppercase text-muted transition-colors duration-200 hover:text-terra"
-            :class="item === 'sumbu' ? 'text-terra/70' : ''"
+            :class="item === 'filosofi' ? 'text-terra/70' : ''"
           >
             {{ $t(`nav.${item}`) }}
           </NuxtLink>
@@ -88,7 +88,8 @@ const toggleLanguage = () => {
           @click="toggleLanguage"
           class="flex items-center gap-1.5 font-josefin text-[10px] font-semibold tracking-[0.1em] uppercase text-terra hover:opacity-60 transition-opacity"
         >
-          <Globe class="w-3.5 h-3.5" /> {{ locale === "id" ? "ID" : "EN" }}
+          <Globe class="w-3.5 h-3.5" />
+          {{ locale === "id" ? "ID" : "EN" }}
         </button>
       </div>
 
@@ -143,7 +144,7 @@ const toggleLanguage = () => {
               :to="`/${item}`"
               active-class="text-terra"
               class="font-josefin text-[14px] font-semibold tracking-[0.2em] uppercase text-muted transition-colors duration-200 hover:text-terra block"
-              :class="item === 'sumbu' ? 'text-terra/70' : ''"
+              :class="item === 'filosofi' ? 'text-terra/70' : ''"
               @click="isMenuOpen = false"
             >
               {{ $t(`nav.${item}`) }}

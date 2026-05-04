@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { ref, computed, onMounted, onUnmounted, nextTick } from "vue";
-import { useHead, useI18n, useAsyncData } from "#imports";
+import { useHead, useSeoMeta, useI18n, useAsyncData } from "#imports";
 import gsap from "gsap";
 import { Observer } from "gsap/Observer";
 
-const { locale } = useI18n();
+const { locale, t } = useI18n();
 
 const { data: rawStops } = await useAsyncData("sumbu", () =>
   $fetch<any[]>("/api/data/sumbu"),
@@ -132,8 +132,17 @@ onUnmounted(() => {
   });
 });
 
+const filosofiTitle = computed(
+  () => `${t("home.editorial.sumbu.title")} — JogjaKu`,
+);
+
+useSeoMeta({
+  title: filosofiTitle,
+  description: computed(() => t("home.editorial.sumbu.desc")),
+  ogTitle: filosofiTitle,
+});
+
 useHead({
-  title: computed(() => `Sumbu Filosofis - Jiwa Nusantara`),
   bodyAttrs: {
     class: "overflow-hidden",
   },

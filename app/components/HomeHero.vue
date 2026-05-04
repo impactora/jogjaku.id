@@ -1,18 +1,17 @@
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted } from "vue";
-import { useI18n } from "#imports";
-import gsap from "gsap";
+import type { Context } from "gsap";
 
 const HOVER_MODE = 1;
 
-const { t } = useI18n();
 const phase = ref(0);
 const titleRef = ref<HTMLElement | null>(null);
 let timer1: ReturnType<typeof setTimeout>;
 let timer2: ReturnType<typeof setTimeout>;
-let ctx: gsap.Context | null = null;
+let ctx: Context | null = null;
 
 const applyHoverInteraction = (
+  gsap: typeof import("gsap").default,
   wrapper: HTMLElement,
   chars: NodeListOf<Element>,
 ) => {
@@ -99,12 +98,13 @@ const applyHoverInteraction = (
 onMounted(() => {
   timer1 = setTimeout(() => {
     phase.value = 1;
-  }, 500);
+  }, 200);
 
   timer2 = setTimeout(() => {
     phase.value = 2;
-
-    if (titleRef.value) {
+    void (async () => {
+      const { default: gsap } = await import("gsap");
+      if (!titleRef.value) return;
       ctx = gsap.context(() => {
         const chars = titleRef.value!.querySelectorAll(".char");
 
@@ -119,13 +119,13 @@ onMounted(() => {
             stagger: 0.05,
             ease: "back.out(1.7)",
             onComplete: () => {
-              applyHoverInteraction(titleRef.value!, chars);
+              applyHoverInteraction(gsap, titleRef.value!, chars);
             },
           },
         );
       });
-    }
-  }, 2000);
+    })();
+  }, 700);
 });
 
 onUnmounted(() => {
@@ -139,14 +139,35 @@ onUnmounted(() => {
   <section
     class="relative h-screen w-full bg-parchment overflow-hidden flex items-center justify-center select-none"
   >
-    <div
-      class="absolute inset-0 w-full h-full bg-[url('/images/home/Tugu_Jogja.jpg')] bg-cover bg-center transition-all duration-[3000ms] ease-out grayscale scale-110 opacity-0"
-      :class="{ '!opacity-30 !scale-100': phase === 2 }"
-    ></div>
+    <picture>
+      <source
+        type="image/webp"
+        srcset="
+          /images/home/Tugu_Jogja-hero-sm.webp  960w,
+          /images/home/Tugu_Jogja-hero.webp    1920w
+        "
+        sizes="100vw"
+      />
+      <img
+        src="/images/home/Tugu_Jogja-hero.jpg"
+        srcset="
+          /images/home/Tugu_Jogja-hero-sm.jpg  960w,
+          /images/home/Tugu_Jogja-hero.jpg    1920w
+        "
+        sizes="100vw"
+        alt=""
+        width="1920"
+        height="1080"
+        fetchpriority="high"
+        decoding="async"
+        class="absolute inset-0 w-full h-full object-cover grayscale scale-110 opacity-25 transition-all duration-[2000ms] ease-out pointer-events-none"
+        :class="{ '!opacity-30 !scale-100': phase >= 2 }"
+      />
+    </picture>
 
     <div class="relative z-10 flex flex-col items-center w-full">
       <div
-        class="text-[15vw] md:text-[12vw] text-ink/30 leading-none transition-all duration-[1500ms] ease-[cubic-bezier(0.8,0,0.2,1)] scale-150 opacity-0 blur-xl whitespace-nowrap"
+        class="text-[15vw] md:text-[12vw] text-brown/80 leading-none transition-all duration-[1200ms] ease-[cubic-bezier(0.8,0,0.2,1)] scale-150 opacity-0 blur-xl whitespace-nowrap"
         :class="{
           '!scale-100 !opacity-100 !blur-0': phase >= 1,
           '-translate-y-16 lg:-translate-y-20': phase === 2,
@@ -172,7 +193,7 @@ onUnmounted(() => {
           </span>
         </h1>
         <div
-          class="font-josefin text-[10px] md:text-xs uppercase tracking-[0.6em] text-ink mt-12 lg:mt-16 opacity-0 transition-all duration-1000 delay-700"
+          class="font-josefin text-[10px] md:text-xs uppercase tracking-[0.6em] text-ink mt-12 lg:mt-16 opacity-0 transition-all duration-700 delay-200"
           :class="{ '!opacity-100': phase === 2 }"
         >
           {{ $t("home.hero.subtitle") }}
@@ -181,11 +202,11 @@ onUnmounted(() => {
     </div>
 
     <div
-      class="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4 opacity-0 transition-opacity duration-1000 delay-1000"
+      class="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4 opacity-0 transition-opacity duration-700 delay-300"
       :class="{ '!opacity-100': phase === 2 }"
     >
       <span
-        class="font-josefin text-[9px] uppercase tracking-[0.4em] text-ink/60"
+        class="font-josefin text-[9px] uppercase tracking-[0.4em] text-brown"
       >
         {{ $t("home.hero.cta") }}
       </span>
