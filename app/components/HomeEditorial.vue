@@ -106,7 +106,7 @@ onUnmounted(() => {
       v-for="(item, index) in editorials"
       :key="item.id"
       @click="handleInteraction(item.id, item.link)"
-      class="editorial-card group relative flex-1 flex items-end overflow-hidden transition-all duration-[800ms] ease-[cubic-bezier(0.7,0,0.3,1)] hover:flex-[3] [&.active]:flex-[3] lg:hover:flex-[4] lg:[&.active]:flex-[4] border-b lg:border-b-0 lg:border-r border-white/10 cursor-pointer"
+      class="editorial-card group relative flex-1 flex items-end overflow-hidden transition-all duration-[800ms] ease-[cubic-bezier(0.7,0,0.3,1)] hover:flex-[3] [&.active]:flex-[3] lg:hover:flex-[4] lg:[&.active]:flex-[4] border-b lg:border-b-0 lg:border-r border-white/10 cursor-pointer min-w-0"
       :class="{ active: activeId === item.id }"
     >
       <div class="absolute inset-0 w-full h-full bg-[#1a1208]">
@@ -123,7 +123,7 @@ onUnmounted(() => {
             (e) =>
               ((e.target as HTMLImageElement).src = '/images/placeholder.jpg')
           "
-          class="absolute inset-0 w-full h-full object-cover opacity-40 grayscale transition-all duration-[1000ms] group-hover:opacity-80 group-[.active]:opacity-80 group-hover:grayscale-0 group-[.active]:grayscale-0 group-hover:scale-105 group-[.active]:scale-105"
+          class="absolute inset-0 w-full h-full object-cover opacity-40 grayscale transition-all duration-[1000ms] group-hover:opacity-80 group-[.active]:opacity-80 group-hover:grayscale-0 group-[.active]:grayscale-0 group-hover:scale-105 group-[.active]:scale-105 transform-gpu"
         />
         <div
           class="absolute inset-0 bg-gradient-to-t from-[#1a1208] via-[#1a1208]/60 to-transparent transition-opacity duration-700 group-hover:opacity-80 group-[.active]:opacity-80"
@@ -148,8 +148,8 @@ onUnmounted(() => {
       <div
         class="relative z-10 w-full p-6 md:p-10 transition-transform duration-700 lg:translate-y-8 group-hover:translate-y-0 group-[.active]:translate-y-0"
       >
-        <div class="flex items-center justify-between w-full">
-          <div>
+        <div class="flex items-center justify-between w-full gap-4">
+          <div class="min-w-0 flex-1">
             <div
               class="font-josefin text-[10px] tracking-[0.3em] text-terra uppercase mb-2 opacity-0 lg:opacity-100 transition-opacity duration-500 lg:group-hover:opacity-100 lg:group-[.active]:opacity-100"
             >
@@ -162,7 +162,7 @@ onUnmounted(() => {
             </h2>
           </div>
           <div
-            class="w-10 h-10 rounded-full border border-white/30 flex items-center justify-center opacity-0 group-hover:opacity-100 group-[.active]:opacity-100 transition-all duration-700 group-hover:bg-terra group-[.active]:bg-terra group-hover:border-terra group-[.active]:border-terra group-hover:-rotate-45 group-[.active]:-rotate-45"
+            class="w-10 h-10 shrink-0 rounded-full border border-white/30 flex items-center justify-center opacity-0 group-hover:opacity-100 group-[.active]:opacity-100 transition-all duration-700 group-hover:bg-terra group-[.active]:bg-terra group-hover:border-terra group-[.active]:border-terra group-hover:-rotate-45 group-[.active]:-rotate-45"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -182,7 +182,7 @@ onUnmounted(() => {
           </div>
         </div>
         <div
-          class="grid grid-rows-[0fr] group-hover:grid-rows-[1fr] group-[.active]:grid-rows-[1fr] transition-all duration-[800ms] ease-[cubic-bezier(0.7,0,0.3,1)]"
+          class="grid grid-rows-[0fr] group-hover:grid-rows-[1fr] group-[.active]:grid-rows-[1fr] transition-[grid-template-rows] duration-[800ms] ease-[cubic-bezier(0.7,0,0.3,1)]"
         >
           <div class="overflow-hidden">
             <p

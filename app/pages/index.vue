@@ -91,3 +91,10 @@ onUnmounted(() => {
     </Teleport>
   </main>
 </template>
+
+<style>
+.hide-default-cursor,
+.hide-default-cursor * {
+  cursor: none !important;
+}
+</style>

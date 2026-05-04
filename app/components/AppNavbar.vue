@@ -36,7 +36,7 @@ const toggleLanguage = () => {
     setTimeout(() => {
       isTranslating.value = false;
     }, 50);
-  }, 400);
+  }, 300);
 };
 </script>
 
@@ -66,11 +66,11 @@ const toggleLanguage = () => {
           </NuxtLink>
         </li>
       </ul>
-      <div class="hidden lg:flex items-center gap-4">
+      <div class="hidden lg:flex items-center gap-2">
         <div class="flex items-center gap-1">
           <button
             @click="isSearchOpen = true"
-            class="flex items-center justify-center p-2 hover:bg-ink/5 rounded-full transition-colors"
+            class="flex items-center justify-center w-8 h-8 hover:bg-ink/5 rounded-full transition-colors"
             aria-label="Buka Pencarian Global"
           >
             <Search
@@ -80,33 +80,33 @@ const toggleLanguage = () => {
           <ThemeToggle />
         </div>
         <span
-          class="font-josefin text-[10px] font-light tracking-[0.15em] uppercase text-muted border-l border-r border-line px-4 mx-2"
+          class="font-josefin text-[10px] font-light tracking-[0.15em] uppercase text-muted border-l border-r border-line px-4 mx-2 flex items-center h-4"
         >
           Vol. I // Yogyakarta
         </span>
         <button
           @click="toggleLanguage"
-          class="flex items-center gap-1.5 font-josefin text-[10px] font-semibold tracking-[0.1em] uppercase text-terra hover:opacity-60 transition-opacity"
+          class="flex items-center justify-center gap-1.5 h-8 px-3 rounded-full hover:bg-ink/5 transition-colors font-josefin text-[12px] font-bold tracking-[0.1em] uppercase text-terra"
         >
-          <Globe class="w-3.5 h-3.5" />
-          {{ locale === "id" ? "ID" : "EN" }}
+          <Globe class="w-4 h-4 shrink-0" />
+          <span class="mt-[2px]">{{ locale === "id" ? "ID" : "EN" }}</span>
         </button>
       </div>
 
-      <div class="flex lg:hidden items-center gap-3">
+      <div class="flex lg:hidden items-center gap-1">
         <button
           @click="isSearchOpen = true"
-          class="flex items-center justify-center p-2"
+          class="flex items-center justify-center w-8 h-8 rounded-full hover:bg-ink/5 transition-colors"
           aria-label="Buka Pencarian Global"
         >
-          <Search class="w-5 h-5 text-ink" />
+          <Search class="w-4 h-4 text-ink" />
         </button>
         <ThemeToggle />
         <button
           @click="toggleLanguage"
-          class="font-josefin text-[10px] font-semibold tracking-[0.1em] uppercase text-terra hover:opacity-60 transition-opacity px-1"
+          class="flex items-center justify-center w-8 h-8 rounded-full hover:bg-ink/5 transition-colors font-josefin text-[12px] font-bold tracking-[0.1em] uppercase text-terra"
         >
-          {{ locale === "id" ? "ID" : "EN" }}
+          <span class="mt-[2px]">{{ locale === "id" ? "ID" : "EN" }}</span>
         </button>
         <button
           class="flex flex-col justify-center items-center w-8 h-8 gap-[5px] cursor-pointer ml-1"
@@ -114,15 +114,15 @@ const toggleLanguage = () => {
           aria-label="Toggle Menu"
         >
           <span
-            class="block w-6 h-[1px] bg-ink transition-transform duration-300 origin-center"
+            class="block w-5 h-[1px] bg-ink transition-transform duration-300 origin-center"
             :class="{ 'rotate-45 translate-y-[6px]': isMenuOpen }"
           ></span>
           <span
-            class="block w-6 h-[1px] bg-ink transition-opacity duration-300"
+            class="block w-5 h-[1px] bg-ink transition-opacity duration-300"
             :class="{ 'opacity-0': isMenuOpen }"
           ></span>
           <span
-            class="block w-6 h-[1px] bg-ink transition-transform duration-300 origin-center"
+            class="block w-5 h-[1px] bg-ink transition-transform duration-300 origin-center"
             :class="{ '-rotate-45 -translate-y-[6px]': isMenuOpen }"
           ></span>
         </button>
