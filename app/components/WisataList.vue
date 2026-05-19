@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Clock, Ticket, Bus, MapPin, Share2 } from "lucide-vue-next";
+import { Clock, Ticket, Bus, Map, MapPin, Share2 } from "lucide-vue-next";
 import { useI18n } from "#imports";
 
 defineProps<{
@@ -12,25 +12,30 @@ const emit = defineEmits(["update:activeDestination"]);
 const { t } = useI18n();
 const toast = useToast();
 
+const getGoogleMapsUrl = (item: any) =>
+  `https://www.google.com/maps/search/?api=1&query=${item.lat},${item.lng}`;
+
 const shareDestination = async (item: any) => {
   const shareData = {
     title: `${item.title} - Jiwa Nusantara`,
     text: item.displayDesc,
     url: window.location.href,
   };
+
   if (navigator.share) {
     try {
       await navigator.share(shareData);
     } catch {}
-  } else {
-    try {
-      await navigator.clipboard.writeText(
-        `${shareData.title}\n${shareData.text}\n\n${shareData.url}`,
-      );
-      toast.show(t("wisata.share_success"), "success");
-    } catch {
-      toast.show(t("wisata.share_failed"), "error");
-    }
+    return;
+  }
+
+  try {
+    await navigator.clipboard.writeText(
+      `${shareData.title}\n${shareData.text}\n\n${shareData.url}`,
+    );
+    toast.show(t("wisata.share_success"), "success");
+  } catch {
+    toast.show(t("wisata.share_failed"), "error");
   }
 };
 </script>
@@ -79,7 +84,7 @@ const shareDestination = async (item: any) => {
             {{ item.title }}
           </h2>
         </div>
-        <div class="print:hidden">
+        <div class="flex flex-col gap-2 print:hidden">
           <div
             @click.stop="shareDestination(item)"
             class="p-2 border rounded-full hover:bg-terra hover:text-warm-white hover:border-terra transition-all cursor-pointer"
@@ -92,6 +97,22 @@ const shareDestination = async (item: any) => {
           >
             <Share2 class="w-4 h-4" />
           </div>
+          <a
+            :href="getGoogleMapsUrl(item)"
+            target="_blank"
+            rel="noopener noreferrer"
+            @click.stop
+            class="p-2 border rounded-full hover:bg-terra hover:text-warm-white hover:border-terra transition-all cursor-pointer"
+            :class="
+              activeDestination === item.id
+                ? 'border-parchment text-parchment'
+                : 'border-line text-muted'
+            "
+            :title="$t('wisata.open_google_maps')"
+            :aria-label="$t('wisata.open_google_maps')"
+          >
+            <Map class="w-4 h-4" />
+          </a>
         </div>
       </div>
       <p

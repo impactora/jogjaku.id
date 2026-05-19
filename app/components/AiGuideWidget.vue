@@ -245,11 +245,13 @@ const downloadPDF = () => {
 </script>
 
 <template>
-  <div class="fixed bottom-6 right-6 z-50 flex flex-col items-end">
+  <div
+    class="fixed inset-x-4 bottom-4 z-50 flex flex-col items-end sm:inset-x-auto sm:right-6 sm:bottom-6"
+  >
     <transition name="slide-up">
       <div
         v-if="isOpen"
-        class="mb-4 w-[340px] sm:w-[400px] h-[580px] bg-warm-white rounded-2xl shadow-2xl flex flex-col overflow-hidden origin-bottom-right border border-line/30 transition-colors duration-300"
+        class="mb-4 w-full max-w-[min(400px,calc(100vw-2rem))] h-[min(580px,calc(100dvh-6rem))] min-h-[420px] bg-warm-white rounded-2xl shadow-2xl flex flex-col overflow-hidden origin-bottom-right border border-line/30 transition-colors duration-300"
       >
         <div
           class="bg-ink p-4 flex items-center justify-between text-warm-white transition-colors duration-300"
@@ -524,7 +526,7 @@ const downloadPDF = () => {
                   })
                 }}
               </div>
-              <div class="flex gap-3">
+              <div class="flex flex-shrink-0 gap-3">
                 <button
                   @click="downloadPDF"
                   class="font-josefin flex items-center gap-1.5 text-[10px] text-ink hover:text-terra uppercase tracking-widest transition-colors"
@@ -596,7 +598,7 @@ const downloadPDF = () => {
 
     <button
       @click="isOpen = !isOpen"
-      class="w-14 h-14 bg-terra text-warm-white rounded-full shadow-[0_10px_25px_-5px_rgba(200,75,49,0.5)] hover:bg-ink hover:shadow-[0_10px_25px_-5px_rgba(26,18,8,0.5)] transition-all duration-300 flex items-center justify-center group z-50"
+      class="w-14 h-14 bg-terra text-warm-white rounded-full shadow-[0_10px_25px_-5px_rgba(200,75,49,0.5)] hover:bg-ink hover:shadow-[0_10px_25px_-5px_rgba(26,18,8,0.5)] transition-all duration-300 flex flex-shrink-0 items-center justify-center group z-50"
       :class="
         isOpen
           ? 'scale-90 opacity-0 pointer-events-none absolute'
