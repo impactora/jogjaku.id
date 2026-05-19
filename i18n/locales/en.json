@@ -152,6 +152,7 @@
     "print_pdf": "Print PDF",
     "location_preview": "Location Preview",
     "share_title": "Share this destination",
+    "open_google_maps": "Open location in Google Maps",
     "share_success": "Link copied to clipboard!",
     "share_failed": "Failed to copy. Browser permission denied.",
     "loading_map": "Loading Spatial Data..."

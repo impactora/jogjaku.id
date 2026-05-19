@@ -152,6 +152,7 @@
     "print_pdf": "Cetak PDF",
     "location_preview": "Pratinjau Lokasi",
     "share_title": "Bagikan destinasi ini",
+    "open_google_maps": "Buka lokasi di Google Maps",
     "share_success": "Tautan berhasil disalin ke papan klip!",
     "share_failed": "Gagal menyalin tautan. Izin peramban ditolak.",
     "loading_map": "Memuat Data Spasial..."
