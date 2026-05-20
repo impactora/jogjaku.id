@@ -10,9 +10,9 @@
     </a>
     <AppNavbar class="print:hidden" />
 
-    <div id="main-content" class="flex-grow relative w-full">
+    <main id="main-content" class="flex-grow relative w-full">
       <slot />
-    </div>
+    </main>
 
     <AppFooter class="print:hidden" />
 

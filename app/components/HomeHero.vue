@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted } from "vue";
-import type { Context } from "gsap";
+import gsap from "gsap";
 
 const HOVER_MODE = 1;
 
@@ -8,17 +8,17 @@ const phase = ref(0);
 const titleRef = ref<HTMLElement | null>(null);
 let timer1: ReturnType<typeof setTimeout>;
 let timer2: ReturnType<typeof setTimeout>;
-let ctx: Context | null = null;
+let ctx: gsap.Context | null = null;
 
 const applyHoverInteraction = (
-  gsap: typeof import("gsap").default,
+  gsapInstance: typeof gsap,
   wrapper: HTMLElement,
   chars: NodeListOf<Element>,
 ) => {
   if (HOVER_MODE === 1) {
     chars.forEach((char) => {
       char.addEventListener("mouseenter", () =>
-        gsap.to(char, {
+        gsapInstance.to(char, {
           y: -20,
           scale: 1.1,
           color: "#faf7f2",
@@ -27,7 +27,7 @@ const applyHoverInteraction = (
         }),
       );
       char.addEventListener("mouseleave", () =>
-        gsap.to(char, {
+        gsapInstance.to(char, {
           y: 0,
           scale: 1,
           color: "#b8491f",
@@ -38,7 +38,7 @@ const applyHoverInteraction = (
     });
   } else if (HOVER_MODE === 2) {
     wrapper.addEventListener("mouseenter", () => {
-      gsap.to(chars, {
+      gsapInstance.to(chars, {
         y: -15,
         duration: 0.2,
         stagger: 0.03,
@@ -49,7 +49,7 @@ const applyHoverInteraction = (
     });
   } else if (HOVER_MODE === 3) {
     wrapper.addEventListener("mouseenter", () => {
-      gsap.to(chars, {
+      gsapInstance.to(chars, {
         rotateX: "+=360",
         duration: 0.8,
         stagger: 0.04,
@@ -58,7 +58,7 @@ const applyHoverInteraction = (
     });
   } else if (HOVER_MODE === 4) {
     wrapper.addEventListener("mouseenter", () => {
-      gsap.to(wrapper, {
+      gsapInstance.to(wrapper, {
         scale: 0.95,
         letterSpacing: "0.1em",
         filter: "blur(2px)",
@@ -67,7 +67,7 @@ const applyHoverInteraction = (
       });
     });
     wrapper.addEventListener("mouseleave", () => {
-      gsap.to(wrapper, {
+      gsapInstance.to(wrapper, {
         scale: 1,
         letterSpacing: "normal",
         filter: "blur(0px)",
@@ -77,7 +77,7 @@ const applyHoverInteraction = (
     });
   } else if (HOVER_MODE === 5) {
     wrapper.addEventListener("mouseenter", () => {
-      gsap.to(wrapper, {
+      gsapInstance.to(wrapper, {
         skewX: -10,
         scale: 1.05,
         duration: 0.4,
@@ -85,7 +85,7 @@ const applyHoverInteraction = (
       });
     });
     wrapper.addEventListener("mouseleave", () => {
-      gsap.to(wrapper, {
+      gsapInstance.to(wrapper, {
         skewX: 0,
         scale: 1,
         duration: 1,
@@ -103,12 +103,12 @@ onMounted(() => {
   timer2 = setTimeout(() => {
     phase.value = 2;
     void (async () => {
-      const { default: gsap } = await import("gsap");
+      const gsapInstance = (await import("gsap")).default;
       if (!titleRef.value) return;
-      ctx = gsap.context(() => {
+      ctx = gsapInstance.context(() => {
         const chars = titleRef.value!.querySelectorAll(".char");
 
-        gsap.fromTo(
+        gsapInstance.fromTo(
           chars,
           { opacity: 0, y: 100, rotateX: -90 },
           {
@@ -119,7 +119,7 @@ onMounted(() => {
             stagger: 0.05,
             ease: "back.out(1.7)",
             onComplete: () => {
-              applyHoverInteraction(gsap, titleRef.value!, chars);
+              applyHoverInteraction(gsapInstance, titleRef.value!, chars);
             },
           },
         );
@@ -155,7 +155,7 @@ onUnmounted(() => {
           /images/home/Tugu_Jogja-hero.jpg    1920w
         "
         sizes="100vw"
-        alt=""
+        alt="Tugu Yogyakarta sebagai ikon Kota Yogyakarta"
         width="1920"
         height="1080"
         fetchpriority="high"
@@ -173,6 +173,7 @@ onUnmounted(() => {
           '-translate-y-16 lg:-translate-y-20': phase === 2,
         }"
         style="font-family: &quot;Noto Sans Javanese&quot;, sans-serif"
+        aria-hidden="true"
       >
         {{ $t("home.hero.javanese_script") }}
       </div>
@@ -192,12 +193,12 @@ onUnmounted(() => {
             {{ char === " " ? "\u00A0" : char }}
           </span>
         </h1>
-        <div
+        <p
           class="font-josefin text-[10px] md:text-xs uppercase tracking-[0.6em] text-ink mt-12 lg:mt-16 opacity-0 transition-all duration-700 delay-200"
           :class="{ '!opacity-100': phase === 2 }"
         >
           {{ $t("home.hero.subtitle") }}
-        </div>
+        </p>
       </div>
     </div>
 

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref, computed, watch } from "vue";
-import { useSeoMeta, useI18n, useAsyncData } from "#imports";
+import { useI18n, useAsyncData } from "#imports";
 import { Printer } from "lucide-vue-next";
 
 const { t, locale } = useI18n();
@@ -47,10 +47,11 @@ const triggerPrint = () => {
   window.print();
 };
 
-useSeoMeta({
-  title: computed(() => t("wisata.page_title")),
-  description: computed(() => t("wisata.header_desc")),
-  ogTitle: computed(() => t("wisata.page_title")),
+setPageSeo({
+  title: t("wisata.page_title"),
+  description: t("wisata.header_desc"),
+  path: "/wisata",
+  image: "/images/home/Prambanan_Temple_Yogyakarta_Indonesia.jpg",
 });
 </script>
 

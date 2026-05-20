@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref, computed } from "vue";
-import { useSeoMeta, useI18n, useAsyncData } from "#imports";
+import { useI18n, useAsyncData } from "#imports";
 
 const { t, locale } = useI18n();
 
@@ -43,10 +43,11 @@ const filteredItems = computed(() => {
   );
 });
 
-useSeoMeta({
-  title: computed(() => t("kuliner.page_title")),
-  description: computed(() => t("kuliner.header_desc")),
-  ogTitle: computed(() => t("kuliner.page_title")),
+setPageSeo({
+  title: t("kuliner.page_title"),
+  description: t("kuliner.header_desc"),
+  path: "/kuliner",
+  image: "/images/kuliner/gudeg.jpg",
 });
 </script>
 

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from "vue";
-import { useSeoMeta, useI18n, useAsyncData } from "#imports";
+import { useI18n, useAsyncData } from "#imports";
 
 const { t, locale } = useI18n();
 
@@ -33,10 +33,11 @@ const festivals = computed(() => {
 
 const hanacaraka = computed(() => budayaData.value?.hanacaraka ?? []);
 
-useSeoMeta({
-  title: computed(() => t("budaya.page_title")),
-  description: computed(() => t("budaya.header_desc")),
-  ogTitle: computed(() => t("budaya.page_title")),
+setPageSeo({
+  title: t("budaya.page_title"),
+  description: t("budaya.header_desc"),
+  path: "/budaya",
+  image: "/images/budaya/kraton.jpg",
 });
 </script>
 

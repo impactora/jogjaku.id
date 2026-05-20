@@ -2,6 +2,37 @@
 import { ref, onMounted, onUnmounted, nextTick } from "vue";
 import gsap from "gsap";
 
+setPageSeo({
+  title: "JogjaKu — Panduan Wisata, Budaya, Kuliner, dan Sejarah Yogyakarta",
+  description:
+    "Eksplorasi Yogyakarta lewat panduan wisata, sejarah, budaya, kuliner, pendidikan, teknologi, peta interaktif, dan Sumbu Filosofi.",
+  path: "/",
+});
+
+useJsonLd({
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: "JogjaKu",
+  url: "https://jogjaku.id",
+  description:
+    "Panduan lengkap Yogyakarta untuk wisata, sejarah, budaya, kuliner, pendidikan, teknologi, peta interaktif, dan Sumbu Filosofi.",
+  inLanguage: "id-ID",
+  potentialAction: {
+    "@type": "SearchAction",
+    target: "https://jogjaku.id/?q={search_term_string}",
+    "query-input": "required name=search_term_string",
+  },
+});
+
+useJsonLd({
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: "JogjaKu",
+  url: "https://jogjaku.id",
+  logo: "https://jogjaku.id/icon-512.png",
+  sameAs: ["https://jogjaku.id"],
+});
+
 const cursorRef = ref<HTMLElement | null>(null);
 const isMounted = ref(false);
 const hasFinePointer = ref(false);

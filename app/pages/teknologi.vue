@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from "vue";
-import { useSeoMeta, useI18n, useAsyncData } from "#imports";
+import { useI18n, useAsyncData } from "#imports";
 
 const { t, locale } = useI18n();
 
@@ -19,10 +19,10 @@ const initiatives = computed(() => {
   }));
 });
 
-useSeoMeta({
-  title: computed(() => t("teknologi.page_title")),
-  description: computed(() => t("teknologi.header_desc")),
-  ogTitle: computed(() => t("teknologi.page_title")),
+setPageSeo({
+  title: t("teknologi.page_title"),
+  description: t("teknologi.header_desc"),
+  path: "/teknologi",
 });
 </script>
 

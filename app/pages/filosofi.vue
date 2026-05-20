@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref, computed, onMounted, onUnmounted, nextTick } from "vue";
-import { useHead, useSeoMeta, useI18n, useAsyncData } from "#imports";
+import { useHead, useI18n, useAsyncData } from "#imports";
 import gsap from "gsap";
 import { Observer } from "gsap/Observer";
 
@@ -136,10 +136,11 @@ const filosofiTitle = computed(
   () => `${t("home.editorial.sumbu.title")} — JogjaKu`,
 );
 
-useSeoMeta({
-  title: filosofiTitle,
-  description: computed(() => t("home.editorial.sumbu.desc")),
-  ogTitle: filosofiTitle,
+setPageSeo({
+  title: filosofiTitle.value,
+  description: t("home.editorial.sumbu.desc"),
+  path: "/filosofi",
+  image: "/images/home/Tugu_Jogja-hero.jpg",
 });
 
 useHead({
