@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref, computed } from "vue";
-import { useSeoMeta, useI18n, useAsyncData } from "#imports";
+import { useI18n, useAsyncData } from "#imports";
 
 const { t, locale } = useI18n();
 
@@ -21,10 +21,11 @@ const timeline = computed(() => {
 
 const activeIndex = ref(0);
 
-useSeoMeta({
-  title: computed(() => t("sejarah.page_title")),
-  description: computed(() => t("sejarah.header_desc")),
-  ogTitle: computed(() => t("sejarah.page_title")),
+setPageSeo({
+  title: t("sejarah.page_title"),
+  description: t("sejarah.header_desc"),
+  path: "/sejarah",
+  image: "/images/home/Kraton_Yogyakarta.jpg",
 });
 </script>
 

@@ -1,8 +1,25 @@
 import tailwindcss from "@tailwindcss/vite";
 
+const env = import.meta.env;
+const siteUrl = env.NUXT_PUBLIC_SITE_URL || "https://jogjaku.id";
+const siteName = "JogjaKu";
+const siteDescription =
+  "Panduan lengkap Yogyakarta untuk wisata, sejarah, budaya, kuliner, pendidikan, teknologi, peta interaktif, dan Sumbu Filosofi.";
+const indexedRoutes = [
+  "/",
+  "/sejarah",
+  "/budaya",
+  "/kuliner",
+  "/wisata",
+  "/pendidikan",
+  "/teknologi",
+  "/peta",
+  "/filosofi",
+];
+
 export default defineNuxtConfig({
   compatibilityDate: "2025-07-15",
-  devtools: { enabled: process.env.NODE_ENV === "development" },
+  devtools: { enabled: env.NODE_ENV === "development" },
   css: ["~/assets/css/main.css"],
 
   modules: ["@nuxtjs/i18n", "@vite-pwa/nuxt", "@nuxtjs/color-mode"],
@@ -24,11 +41,14 @@ export default defineNuxtConfig({
   },
 
   runtimeConfig: {
-    geminiApiKey: process.env.GEMINI_API_KEY,
-    groqApiKey: process.env.GROQ_API_KEY,
-    openWeatherApiKey: process.env.OPENWEATHER_API_KEY,
+    geminiApiKey: env.GEMINI_API_KEY,
+    groqApiKey: env.GROQ_API_KEY,
+    openWeatherApiKey: env.OPENWEATHER_API_KEY,
     public: {
-      siteUrl: process.env.NUXT_PUBLIC_SITE_URL || "https://jogjaku.id",
+      siteUrl,
+      siteName,
+      siteDescription,
+      indexedRoutes,
     },
   },
 
@@ -56,7 +76,8 @@ export default defineNuxtConfig({
   app: {
     head: {
       htmlAttrs: { lang: "id" },
-      title: "JogjaKu — Pusaka Jiwa Mataram",
+      title:
+        "JogjaKu — Panduan Wisata, Budaya, Kuliner, dan Sejarah Yogyakarta",
       meta: [
         { charset: "utf-8" },
         {
@@ -65,8 +86,24 @@ export default defineNuxtConfig({
         },
         {
           name: "description",
-          content:
-            "Portal panduan wisata, sejarah, budaya, kuliner, dan teknologi Kota Yogyakarta.",
+          content: siteDescription,
+        },
+        { name: "robots", content: "index, follow" },
+        { name: "theme-color", content: "#faf7f2" },
+        { property: "og:type", content: "website" },
+        { property: "og:site_name", content: siteName },
+        { property: "og:locale", content: "id_ID" },
+        { property: "og:title", content: "JogjaKu — Panduan Yogyakarta" },
+        { property: "og:description", content: siteDescription },
+        {
+          property: "og:image",
+          content: `${siteUrl}/images/home/Tugu_Jogja-hero.jpg`,
+        },
+        { name: "twitter:card", content: "summary_large_image" },
+        { name: "twitter:title", content: "JogjaKu — Panduan Yogyakarta" },
+        {
+          name: "twitter:description",
+          content: siteDescription,
         },
       ],
       link: [
@@ -87,6 +124,7 @@ export default defineNuxtConfig({
           fetchpriority: "high",
         },
         { rel: "icon", type: "image/svg+xml", href: "/favicon.svg" },
+        { rel: "canonical", href: siteUrl },
       ],
       script: [
         {
@@ -101,16 +139,7 @@ export default defineNuxtConfig({
   nitro: {
     compressPublicAssets: true,
     prerender: {
-      routes: [
-        "/",
-        "/sejarah",
-        "/budaya",
-        "/kuliner",
-        "/wisata",
-        "/teknologi",
-        "/peta",
-        "/filosofi",
-      ],
+      routes: indexedRoutes,
       crawlLinks: true,
     },
     serverAssets: [{ baseName: "data", dir: "./server/data" }],
@@ -138,9 +167,9 @@ export default defineNuxtConfig({
         "gsap/Observer",
         "lucide-vue-next",
         "fuse.js",
-        "maplibre-gl", // CJS
-        "leaflet", // CJS
-        "leaflet.markercluster", // CJS
+        "maplibre-gl",
+        "leaflet",
+        "leaflet.markercluster",
       ],
     },
   },

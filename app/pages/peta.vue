@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref, computed } from "vue";
-import { useSeoMeta, useI18n } from "#imports";
+import { useI18n } from "#imports";
 
 const { t } = useI18n();
 
@@ -9,10 +9,10 @@ const selectedCategory = ref<
   "all" | "wisata" | "kuliner" | "budaya" | "teknologi"
 >("all");
 
-useSeoMeta({
-  title: computed(() => t("peta.page_title")),
-  description: computed(() => t("peta.header_desc")),
-  ogTitle: computed(() => t("peta.page_title")),
+setPageSeo({
+  title: t("peta.page_title"),
+  description: t("peta.header_desc"),
+  path: "/peta",
 });
 </script>
 

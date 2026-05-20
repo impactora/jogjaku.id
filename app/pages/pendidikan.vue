@@ -14,7 +14,7 @@ import {
   Users,
   Wifi,
 } from "lucide-vue-next";
-import { useAsyncData, useI18n, useSeoMeta } from "#imports";
+import { useAsyncData, useI18n } from "#imports";
 
 const { locale } = useI18n();
 
@@ -207,11 +207,10 @@ const handleHeroImageLoad = (event: Event) => {
     imageRatio < containerRatio ? "center 34%" : "center 42%";
 };
 
-useSeoMeta({
-  title: computed(() => pageCopy.value.seoTitle),
-  description: computed(() => pageCopy.value.seoDescription),
-  ogTitle: computed(() => pageCopy.value.seoTitle),
-  ogDescription: computed(() => pageCopy.value.seoDescription),
+setPageSeo({
+  title: pageCopy.value.seoTitle,
+  description: pageCopy.value.seoDescription,
+  path: "/pendidikan",
 });
 </script>
 
@@ -317,7 +316,7 @@ useSeoMeta({
             :key="`${item.displayPeriod}-${item.displayTitle}`"
             v-observe
             class="reveal-up group grid grid-cols-1 sm:grid-cols-[86px_1fr] gap-4 sm:gap-6 p-6 lg:p-8 bg-warm-white border border-line hover:shadow-xl hover:-translate-y-1 transition-all duration-500"
-            :class="`delay-${(index + 1) * 100}`"
+            :class="`delay-${(Number(index) + 1) * 100}`"
           >
             <div
               class="font-josefin text-[10px] font-semibold tracking-[0.2em] uppercase text-terra pt-1"
