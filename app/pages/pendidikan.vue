@@ -385,12 +385,12 @@ useSeoMeta({
             ></div>
           </div>
           <div
-            class="font-josefin text-[9px] font-semibold tracking-[0.2em] uppercase text-terra mb-3"
+            class="font-josefin text-[9px] font-semibold tracking-[0.16em] sm:tracking-[0.2em] uppercase text-terra mb-3 break-words"
           >
             {{ university.displayStrength }}
           </div>
           <h3
-            class="font-libre text-[24px] font-bold text-ink mb-3 group-hover:text-terra transition-colors duration-300"
+            class="font-libre text-[24px] sm:text-[24px] font-bold text-ink mb-3 group-hover:text-terra transition-colors duration-300"
           >
             {{ university.name }}
           </h3>
@@ -400,15 +400,15 @@ useSeoMeta({
             {{ university.displayDescription }}
           </p>
           <div
-            class="pt-4 border-t border-line flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 sm:gap-4"
+            class="pt-4 border-t border-line grid grid-cols-[1fr_auto] items-center gap-4"
           >
             <span
-              class="font-josefin text-[9px] tracking-[0.15em] uppercase text-muted"
+              class="font-josefin text-[9px] tracking-[0.15em] uppercase text-muted break-words min-w-0"
               >{{ university.displayAtmosphere }}</span
             >
             <button
               type="button"
-              class="font-josefin text-[10px] font-semibold tracking-[0.18em] uppercase text-terra hover:text-ink transition-colors"
+              class="inline-flex shrink-0 items-center justify-center font-josefin text-[10px] font-semibold tracking-[0.18em] uppercase text-terra hover:text-ink transition-colors"
               @click="openUniversityDetail(university)"
             >
               {{ pageCopy.detail }}
