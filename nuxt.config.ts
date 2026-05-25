@@ -7,14 +7,14 @@ const siteDescription =
   "Panduan lengkap Yogyakarta untuk wisata, sejarah, budaya, kuliner, pendidikan, teknologi, peta interaktif, dan Sumbu Filosofi.";
 const indexedRoutes = [
   "/",
-  "/sejarah",
-  "/budaya",
-  "/kuliner",
-  "/wisata",
-  "/pendidikan",
-  "/teknologi",
-  "/peta",
-  "/filosofi",
+  "/sejarah/",
+  "/budaya/",
+  "/kuliner/",
+  "/wisata/",
+  "/pendidikan/",
+  "/teknologi/",
+  "/peta/",
+  "/filosofi/",
 ];
 
 export default defineNuxtConfig({
@@ -48,7 +48,6 @@ export default defineNuxtConfig({
       siteUrl,
       siteName,
       siteDescription,
-      indexedRoutes,
     },
   },
 
@@ -124,7 +123,7 @@ export default defineNuxtConfig({
           fetchpriority: "high",
         },
         { rel: "icon", type: "image/svg+xml", href: "/favicon.svg" },
-        { rel: "canonical", href: siteUrl },
+        { rel: "canonical", href: `${siteUrl}/` },
       ],
       script: [
         {

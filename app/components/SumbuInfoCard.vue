@@ -347,7 +347,7 @@ const onLeave = (el: Element, done: () => void) => {
               {{ locale === "id" ? "Perjalanan Selesai" : "End" }}
             </span>
             <NuxtLink
-              to="/peta"
+              to="/peta/"
               class="font-josefin text-[8px] tracking-widest uppercase text-[#faf7f2]/40 hover:text-[#faf7f2] transition-colors underline"
             >
               {{ locale === "id" ? "Lihat di Peta" : "View Map" }}

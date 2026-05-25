@@ -43,7 +43,7 @@ const routes = [
           <NuxtLink
             v-for="item in routes.slice(0, 3)"
             :key="item"
-            :to="`/${item}`"
+            :to="`/${item}/`"
             class="hover:text-[#b8491f] transition-colors"
           >
             {{ $t(`nav.${item}`) }}
@@ -55,7 +55,7 @@ const routes = [
           <NuxtLink
             v-for="item in routes.slice(3)"
             :key="item"
-            :to="`/${item}`"
+            :to="`/${item}/`"
             class="hover:text-[#b8491f] transition-colors"
             :class="
               item === 'filosofi'

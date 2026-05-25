@@ -13,7 +13,9 @@ export const setPageSeo = ({
 }: PageSeoInput) => {
   const config = useRuntimeConfig();
   const siteUrl = config.public.siteUrl.replace(/\/$/, "");
-  const url = path === "/" ? siteUrl : `${siteUrl}${path}`;
+  const normalizedPath = path === "/" || path.endsWith("/") ? path : `${path}/`;
+  const url =
+    normalizedPath === "/" ? `${siteUrl}/` : `${siteUrl}${normalizedPath}`;
   const imageUrl = image.startsWith("http") ? image : `${siteUrl}${image}`;
 
   useSeoMeta({
