@@ -58,7 +58,7 @@ const toggleLanguage = () => {
       <ul class="hidden lg:flex gap-9">
         <li v-for="item in routes" :key="item">
           <NuxtLink
-            :to="`/${item}`"
+            :to="`/${item}/`"
             active-class="text-terra"
             class="font-josefin text-[11px] font-semibold tracking-[0.18em] uppercase text-muted transition-colors duration-200 hover:text-terra"
             :class="item === 'filosofi' ? 'text-terra/70' : ''"
@@ -142,7 +142,7 @@ const toggleLanguage = () => {
         <ul class="flex flex-col gap-6">
           <li v-for="item in routes" :key="item">
             <NuxtLink
-              :to="`/${item}`"
+              :to="`/${item}/`"
               active-class="text-terra"
               class="font-josefin text-[14px] font-semibold tracking-[0.2em] uppercase text-muted transition-colors duration-200 hover:text-terra block"
               :class="item === 'filosofi' ? 'text-terra/70' : ''"

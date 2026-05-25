@@ -1,4 +1,5 @@
-User-Agent: *
+User-agent: *
 Allow: /
+Disallow: /api/
 
 Sitemap: https://jogjaku.id/sitemap.xml

@@ -28,9 +28,9 @@ useJsonLd({
   "@context": "https://schema.org",
   "@type": "Organization",
   name: "JogjaKu",
-  url: "https://jogjaku.id",
+  url: "https://jogjaku.id/",
   logo: "https://jogjaku.id/icon-512.png",
-  sameAs: ["https://jogjaku.id"],
+  sameAs: ["https://jogjaku.id/"],
 });
 
 const cursorRef = ref<HTMLElement | null>(null);
