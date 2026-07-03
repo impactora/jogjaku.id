@@ -2,6 +2,8 @@
 import { ref, onMounted, onUnmounted, nextTick } from "vue";
 import gsap from "gsap";
 
+definePageMeta({ layout: "story" });
+
 setPageSeo({
   title: "JogjaKu — Panduan Wisata, Budaya, Kuliner, dan Sejarah Yogyakarta",
   description:
@@ -91,13 +93,20 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <main
-    class="min-h-screen bg-parchment relative w-full overflow-hidden flex flex-col"
-  >
-    <HomeHero />
-    <HomeIntro />
-    <HomePhilosophy />
-    <HomeEditorial />
+  <div class="min-h-screen bg-parchment relative w-full overflow-hidden flex flex-col">
+    <StoryHomeStoryContainer>
+      <StoryChapterHero />
+      <StoryChapterSejarah />
+      <StoryChapterBudaya />
+      <StoryChapterFilosofi />
+      <StoryChapterWisata />
+      <StoryChapterKuliner />
+      <StoryChapterPendidikan />
+      <StoryChapterTeknologi />
+      <StoryChapterPeta />
+      <StoryChapterClosing />
+    </StoryHomeStoryContainer>
+  </div>
 
     <Teleport to="body" v-if="isMounted && hasFinePointer">
       <div
@@ -108,7 +117,6 @@ onUnmounted(() => {
         <span class="mt-[2px]">J</span>
       </div>
     </Teleport>
-  </main>
 </template>
 
 <style>
